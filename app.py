@@ -32,7 +32,7 @@ st.divider()
 st.sidebar.header("👤 User Information & Ratings")
 
 # 텍스트 입력창 (영문 이름 입력 안내)
-user_name = st.sidebar.text_input("Enter your English Name", "Sungjun").strip()
+user_name = st.sidebar.text_input("Enter your English Name", "").strip()
 if not user_name:
     user_name = "User"
 
@@ -40,7 +40,6 @@ genres = ["SF", "Horror", "Romance", "Comedy", "Documentary", "Humanities", "Art
 
 st.sidebar.subheader("📌 Rate 10 Genres (0 ~ 5)")
 st.sidebar.caption("5점: 최선호 장르 / 0점: 소비하지 않는 장르")
-st.sidebar.info("💡 실험 팁: SF와 Arts에 5점을 주시고 나머지는 0~1점을 주어 편향을 유도해 보세요!")
 
 # 마우스 슬라이더 바로 점수 입력받기
 genre_ratings = {}
