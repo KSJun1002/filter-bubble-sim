@@ -125,7 +125,9 @@ with col3:
 st.subheader("📊 Simulation Result Chart")
 
 # Matplotlib 차트 빌드 및 렌더링
-fig, ax = plt.subplots(figsize=(12, 5))
+fig = plt.figure(figsize=(12, 5))
+ax = fig.add_subplot(1, 1, 1)
+
 x = np.arange(len(df_result))
 width = 0.35
 
