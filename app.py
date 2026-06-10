@@ -10,7 +10,6 @@ import pandas as pd
 
 import matplotlib
 matplotlib.use('Agg') 
-
 import matplotlib.pyplot as plt
 
 # ------------------------------------------------------------------------------
@@ -42,13 +41,13 @@ st.sidebar.subheader("📌 Rate 10 Genres (0 ~ 5)")
 st.sidebar.caption("5점: 최선호 장르 / 0점: 소비하지 않는 장르")
 st.sidebar.info("💡 실험 팁: SF와 Arts에 5점을 주시고 나머지는 0~1점을 주어 편향을 유도해 보세요!")
 
-# 마우스 슬라이더 바로 점수 입력받기 (터미널 input 제거)
+# 마우스 슬라이더 바로 점수 입력받기
 genre_ratings = {}
 for g in genres:
     genre_ratings[g] = st.sidebar.slider(f"[{g}] Score", min_value=0, max_value=5, value=0)
 
 # ------------------------------------------------------------------------------
-# 3. 데이터 행렬 구성 및 알고리즘 연산부 (기존 수학 모델 적용)
+# 3. 데이터 행렬 구성 및 알고리즘 연산부 (수학 모델 적용)
 # ------------------------------------------------------------------------------
 content_names = [
     "Interstellar (SF)", "The Conjuring (Horror)", "About Time (Romance)", 
@@ -128,7 +127,7 @@ with col3:
 
 st.subheader("📊 Simulation Result Chart")
 
-# Matplotlib 차트 빌드 및 렌더링
+# 안전한 웹 렌더링을 위해 객체 지향형 구조로 명시적 분리하여 그래프 생성
 fig = plt.figure(figsize=(12, 5))
 ax = fig.add_subplot(1, 1, 1)
 
@@ -163,7 +162,7 @@ ax.set_ylim(0, 6)
 ax.grid(axis='y', linestyle='--', alpha=0.4)
 ax.legend(loc='upper right')
 
-# 스트림릿 웹 화면에 매트플롯립 피규어 주입
+# 완성된 도화지(fig) 객체를 스트림릿에 안전하게 전달 (절대 plt.show()를 쓰지 않음)
 st.pyplot(fig)
 
 # 하단 데이터 표 추가 노출
